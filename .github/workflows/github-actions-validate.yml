@@ -1,0 +1,28 @@
+name: Validate Terraform
+on: [push]
+
+jobs:
+  terraform-validate:
+    runs-on: ubuntu-latest
+    environment: development
+    env:
+      AWS_ACCESS_KEY_ID: ${{ vars.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: ${{ vars.AWS_DEFAULT_REGION }}
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: 1.8.1
+    - name: Terraform init and validate eks-cluster
+      run: |
+        cd eks-cluster
+        terraform init
+        terraform validate
+    - name: Terraform init and validate eks-config
+      run: |
+        cd eks-config
+        terraform init
+        terraform validate
