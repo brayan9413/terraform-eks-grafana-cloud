@@ -1,5 +1,5 @@
 #--------------------------------------------------------------------
-# - ECK elastic helm release
+# - Grafana helm release
 # A Helm chart for gathering, scraping, and forwarding Kubernetes telemetry data to a Grafana Stack.
 # - https://staging.artifacthub.io/packages/helm/grafana/k8s-monitoring
 #--------------------------------------------------------------------
@@ -11,6 +11,10 @@ resource "helm_release" "grafana-k8s-monitoring" {
   create_namespace = true
   atomic           = true
   timeout          = 300
+
+  # Custom configuration
+  #  List of values in raw yaml to pass to helm. Values will be merged, in order, as Helm does with multiple -f options
+  values = [file("${path.module}/templates/grafana-alloy-config.yaml")]
 
   set {
     name  = "cluster.name"

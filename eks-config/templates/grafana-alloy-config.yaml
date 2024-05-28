@@ -1,0 +1,15 @@
+logs:
+  pod_logs:
+    extraStageBlocks: |
+      stage.json {
+        expressions = { 
+          "app_name" = "service",
+          "app_level_info" = "level",
+        }
+      }
+      stage.labels {
+        values = {
+          "app_name" = "",
+          "app_level_info" = "",
+        }
+      }
