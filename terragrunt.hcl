@@ -32,7 +32,7 @@ terraform {
     key            = "${path_relative_to_include()}/terraform.tfstate"
     region         = "${get_env("TF_VAR_backend_s3_region")}"
     encrypt        = true
-    dynamodb_table = "terraform-lock"
+    dynamodb_table = "${get_env("TF_VAR_dynamodb_table_state_locking")}"
   }
 }
 EOF
