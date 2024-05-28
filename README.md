@@ -4,6 +4,12 @@
 
 This Terraform project facilitates the deployment of an AWS Elastic Kubernetes Service (EKS) cluster. The infrastructure is defined as code, allowing for easy provisioning and management of the Kubernetes cluster on AWS.
 
+**Grafana Cloud Integration**
+
+Grafana k8s monitoring is implemented by using A Helm chart for gathering, scraping, and forwarding Kubernetes telemetry data to a Grafana Stack `eks-config/config-grafana-cloud.tf`
+
+An example for custom agent configuration was added here: `eks-config/templates/grafana-alloy-config.yaml`
+
 ## Project structure
 
 ```
