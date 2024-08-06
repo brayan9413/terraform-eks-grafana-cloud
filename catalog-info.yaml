@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: terraform-eks-grafana-cloud
+  annotations:
+    github.com/project-slug: brayan9413/terraform-eks-grafana-cloud
+spec:
+  type: other
+  lifecycle: unknown
+  owner: sre-team
